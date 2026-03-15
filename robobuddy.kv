@@ -1,0 +1,204 @@
+<TaskItem>:
+    orientation: 'horizontal'
+    size_hint_y: None
+    height: label.texture_size[1] + dp(20) if label.texture_size[1] > dp(40) else dp(50)
+    padding: dp(5)
+    spacing: dp(5)
+    canvas.before:
+        Color:
+            rgba: (0.3, 0.3, 0.3, 1) if self.state == 'down' else ((0.2, 0.2, 0.2, 1) if not self.is_complete else (0.1, 0.1, 0.1, 1))
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        # Yellow border at bottom of each task
+        Color:
+            rgba: 1, 1, 0, 0.5
+        Line:
+            points: [self.x, self.y, self.right, self.y]
+            width: 1
+
+    Image:
+        source: 'atlas://data/images/defaulttheme/checkbox_on' if root.is_complete else 'atlas://data/images/defaulttheme/checkbox_off'
+        size_hint: None, None
+        size: dp(60), dp(60)
+        pos_hint: {'center_y': 0.5}
+        color: 1, 1, 0, 1
+
+    Label:
+        id: label
+        text: root.text
+        font_size: '18sp'
+        halign: 'left'
+        valign: 'center'
+        text_size: self.width, None
+        size_hint_y: None
+        height: self.texture_size[1]
+        color: (1, 1, 0, 1) if not root.is_complete else (0.5, 0.5, 0.5, 1)
+        # Ensure label takes remaining width
+        size_hint_x: 1 
+
+<RoboBuddyRoot>:
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # Header (Fixed Height 50dp)
+    BoxLayout:
+        size_hint_y: None
+        height: dp(50)
+        padding: dp(5)
+        canvas.before:
+            Color:
+                rgba: 1, 1, 0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        
+        Label:
+            text: root.current_period
+            font_size: '20sp'
+            bold: True
+            color: 0, 0, 0, 1
+            text_size: self.size
+            halign: 'left'
+            valign: 'center'
+            size_hint_x: 1
+
+        # Directional Arrows
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(2)
+            padding: dp(2)
+            size_hint_x: None
+            width: self.minimum_width
+            
+            Button:
+                id: btn_left
+                text: '<'
+                font_size: '18sp'
+                bold: True
+                background_normal: ''
+                background_color: (0, 1, 0, 1) if self.state == 'down' else (0.5, 0.5, 0.5, 1)
+                color: 0, 0, 0, 1
+                size_hint_x: None
+                width: dp(40)
+                on_press: root.turn_left()
+                on_release: root.stop_motors()
+            
+            Button:
+                id: btn_forward
+                text: '^'
+                font_size: '18sp'
+                bold: True
+                background_normal: ''
+                background_color: (0, 1, 0, 1) if self.state == 'down' else (0.5, 0.5, 0.5, 1)
+                color: 0, 0, 0, 1
+                size_hint_x: None
+                width: dp(40)
+                on_press: root.move_forward()
+                on_release: root.stop_motors()
+            
+            Button:
+                id: btn_backward
+                text: 'v'
+                font_size: '18sp'
+                bold: True
+                background_normal: ''
+                background_color: (0, 1, 0, 1) if self.state == 'down' else (0.5, 0.5, 0.5, 1)
+                color: 0, 0, 0, 1
+                size_hint_x: None
+                width: dp(40)
+                on_press: root.move_backward()
+                on_release: root.stop_motors()
+            
+            Button:
+                id: btn_right
+                text: '>'
+                font_size: '18sp'
+                bold: True
+                background_normal: ''
+                background_color: (0, 1, 0, 1) if self.state == 'down' else (0.5, 0.5, 0.5, 1)
+                color: 0, 0, 0, 1
+                size_hint_x: None
+                width: dp(40)
+                on_press: root.turn_right()
+                on_release: root.stop_motors()
+
+        Label:
+            text: root.current_time
+            font_size: '18sp'
+            bold: True
+            color: 0, 0, 0, 1
+            text_size: self.size
+            halign: 'right'
+            valign: 'center'
+            size_hint_x: 1
+
+        Button:
+            text: 'X'
+            font_size: '20sp'
+            bold: True
+            background_normal: ''
+            background_color: 0, 0, 0, 1
+            color: 1, 1, 0, 1
+            size_hint_x: None
+            width: dp(40)
+            on_press: app.stop()
+
+    # Task List Area (Takes all remaining vertical space)
+    ScrollView:
+        do_scroll_x: False
+        scroll_type: ['bars']
+        bar_color: 1, 1, 0, 0.8
+        bar_width: dp(20)
+        BoxLayout:
+            id: task_container
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            padding: dp(5)
+            spacing: dp(2)
+
+    # Navigation Bar (Fixed Height 50dp)
+    BoxLayout:
+        size_hint_y: None
+        height: dp(50)
+        padding: dp(2)
+        spacing: dp(2)
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        
+        Button:
+            text: 'Morning'
+            on_press: root.switch_period('Morning')
+            background_normal: ''
+            background_color: (0.2, 0.2, 0.2, 1) if root.current_period != 'Morning' else (1, 1, 0, 1)
+            color: (1, 1, 1, 1) if root.current_period != 'Morning' else (0, 0, 0, 1)
+            font_size: '14sp'
+            bold: True
+
+        Button:
+            text: 'Afternoon'
+            on_press: root.switch_period('Afternoon')
+            background_normal: ''
+            background_color: (0.2, 0.2, 0.2, 1) if root.current_period != 'Afternoon' else (1, 1, 0, 1)
+            color: (1, 1, 1, 1) if root.current_period != 'Afternoon' else (0, 0, 0, 1)
+            font_size: '14sp'
+            bold: True
+
+        Button:
+            text: 'Night'
+            on_press: root.switch_period('Night')
+            background_normal: ''
+            background_color: (0.2, 0.2, 0.2, 1) if root.current_period != 'Night' else (1, 1, 0, 1)
+            color: (1, 1, 1, 1) if root.current_period != 'Night' else (0, 0, 0, 1)
+            font_size: '14sp'
+            bold: True

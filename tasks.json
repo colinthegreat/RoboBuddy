@@ -1,0 +1,73 @@
+{
+  "Morning": [
+    {
+      "text": "Brush teeth",
+      "finished_audio": "ElevenLabs_2026-02-22T03_14_13_RoboBuddy_finished_brush_teeth.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_25_01_RoboBuddy_next_packing_homework.wav"
+    },
+    {
+      "text": "Pack homework in backpack",
+      "finished_audio": "ElevenLabs_2026-02-22T03_15_05_RoboBuddy_finished_packing_homework.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_25_20_RoboBuddy_next_eat_breakfast.wav"
+    },
+    {
+      "text": "Eat breakfast",
+      "finished_audio": "ElevenLabs_2026-02-22T03_15_49_RoboBuddy_finished_breakfast.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_25_49_RoboBuddy_next_go_school.wav"
+    },
+    {
+      "text": "Go to school",
+      "finished_audio": "ElevenLabs_2026-02-23T00_11_28_RoboBuddy_finished_going_school.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_26_21_RoboBuddy_next_homework.wav"
+    }
+  ],
+  "Afternoon": [
+    {
+      "text": "Do homework",
+      "finished_audio": "ElevenLabs_2026-02-22T03_16_18_RoboBuddy_finished_your_homework.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_27_13_RoboBuddy_next_read_book.wav"
+    },
+    {
+      "text": "Read a book for 30 minutes",
+      "finished_audio": "ElevenLabs_2026-02-22T03_17_56_RoboBuddy_finished_reading.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_27_46_RoboBuddy_next_clean_room.wav"
+    },
+    {
+      "text": "Clean room",
+      "finished_audio": "ElevenLabs_2026-02-22T03_18_21_RoboBuddy_finished_cleaning_room.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_28_09_RoboBuddy_next_screen_time.wav"
+    },
+    {
+      "text": "Screen time",
+      "finished_audio": "ElevenLabs_2026-02-22T03_19_11_RoboBuddy_finished_screen_time.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_28_32_RoboBuddy_next_relaxation.wav"
+    },
+    {
+      "text": "10 minutes of meditation",
+      "finished_audio": "ElevenLabs_2026-02-22T03_20_30_RoboBuddy_finished_relaxation.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_28_54_RoboBuddy_next_wash_hands.wav"
+    }
+  ],
+  "Night": [
+    {
+      "text": "Wash hands",
+      "finished_audio": "ElevenLabs_2026-02-22T03_20_57_RoboBuddy_finished_washing_hands.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_29_22_RoboBuddy_next_brush_teeth_night.wav"
+    },
+    {
+      "text": "Brush teeth",
+      "finished_audio": "ElevenLabs_2026-02-22T03_21_39_RoboBuddy_finished_brushing_teeth_night.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_29_58_RoboBuddy_next_charge_chromebook.wav"
+    },
+    {
+      "text": "Charge chromebook",
+      "finished_audio": "ElevenLabs_2026-02-22T03_22_29_RoboBuddy_finished_charging_chromebook.wav",
+      "next_audio": "ElevenLabs_2026-02-22T03_30_20_RoboBuddy_next_get_ready_bed.wav"
+    },
+    {
+      "text": "Get ready for bed",
+      "finished_audio": "ElevenLabs_2026-02-22T03_22_52_RoboBuddy_finished_ready_for_bed.wav",
+      "next_audio": null
+    }
+  ]
+}
